@@ -24,6 +24,8 @@ import 'package:flutter/widgets.dart';
 ///         - asset: fonts/icons.otf
 /// ```
 class UiIcons {
+  const UiIcons._();
+
   static const iconFontFamily = 'Ui Icons';
 
   /// Font icon named "__account__"
@@ -48,14 +50,4 @@ class UiIcons {
   /// <image width='32px' src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgY2xpcC1ydWxlPSJldmVub2RkIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMC42NDggNWgtOS4yOTVjLTEuMzExIDAtMi41MDMuOTcyLTIuNTAzIDIuMzF2MTguNzc5Yy4wMy4zMzQuMjM4LjYzOC41MzYuNzkuMjk4LjE1MS42NTYuMTUxLjkyNC0uMDNsNS42Ni0zLjczOSA1LjY2IDMuNzM4YS45OS45OSAwIDAwLjUwNy4xNTJjLjE3OSAwIC4zMjgtLjA2LjQ3Ny0uMTIyYS45OTkuOTk5IDAgMDAuNTM2LS43OVY3LjMxYzAtMS4zMzgtMS4xOTItMi4zMS0yLjUwMi0yLjMxeiIvPjwvc3ZnPg=='>
   static const IconData collection =
       IconData(0xe003, fontFamily: iconFontFamily);
-
-  /// All icon values in this class.
-  static const List<IconData> values = [
-    account,
-    arrowLeft,
-    arrowRight,
-    collection,
-  ];
-
-  const UiIcons._();
 }
