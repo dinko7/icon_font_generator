@@ -56,6 +56,13 @@ class UiIcons {
   static const IconData arrowLeft = _UiIconsData(0xe001);
   static const IconData arrowRight = _UiIconsData(0xe002);
   static const IconData collection = _UiIconsData(0xe003);
+
+  static const List<IconData> values = [
+    account,
+    arrowLeft,
+    arrowRight,
+    collection,
+  ];
 }
 ```
 And also need add font to pubspec.yaml:
