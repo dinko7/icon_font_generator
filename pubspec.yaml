@@ -17,7 +17,7 @@ dependencies:
   path_parsing: ^1.1.0
   pub_semver: ^2.2.0
   recase: ^4.1.0
-  vector_math: ^2.2.0
+  vector_math: ^2.1.4
   xml: ^6.6.1
   yaml: ^3.1.3
 
