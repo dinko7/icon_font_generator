@@ -8,13 +8,8 @@ import 'package:icon_font_generator/src/common/api.dart';
 import 'package:icon_font_generator/src/otf/io.dart';
 import 'package:icon_font_generator/src/utils/logger.dart';
 import 'package:path/path.dart' as p;
+import 'package:pub_semver/pub_semver.dart';
 import 'package:yaml/yaml.dart';
-
-final _argParser = ArgParser(allowTrailingOptions: true);
-final formatter = DartFormatter(
-  pageWidth: 80,
-  fixes: StyleFix.all,
-);
 
 void main(List<String> args) {
   defineOptions(_argParser);
@@ -38,6 +33,42 @@ void main(List<String> args) {
     logger.e(e.toString());
     exit(65);
   }
+}
+
+const _kAbout =
+    'Converts .svg icons to an OpenType font and generates Flutter-compatible class.';
+
+const _kUsage = '''
+Usage:   icon_font_generator <input-svg-dir> <output-font-file> [options]
+
+Example: icon_font_generator assets/svg/ fonts/my_icons_font.otf --output-class-file=lib/my_icons.dart
+
+Converts every .svg file from <input-svg-dir> directory to an OpenType font and writes it to <output-font-file> file.
+If "--output-class-file" option is specified, Flutter-compatible class that contains identifiers for the icons is generated.
+''';
+
+final formatter = DartFormatter(
+  pageWidth: 80,
+  languageVersion: Version(2, 19, 0),
+);
+
+final _argParser = ArgParser(allowTrailingOptions: true);
+
+void _printHelp() {
+  _printUsage();
+  exit(exitCode);
+}
+
+void _printUsage([String? error]) {
+  final message = error ?? _kAbout;
+
+  stdout.write('''
+$message
+
+$_kUsage
+${_argParser.usage}
+''');
+  exit(64);
 }
 
 void _run(CliArguments parsedArgs) {
@@ -120,36 +151,7 @@ void _run(CliArguments parsedArgs) {
   logger.i('Generated in ${stopwatch.elapsedMilliseconds}ms');
 }
 
-void _printHelp() {
-  _printUsage();
-  exit(exitCode);
-}
-
 void _usageError(String error) {
   _printUsage(error);
   exit(64);
 }
-
-void _printUsage([String? error]) {
-  final message = error ?? _kAbout;
-
-  stdout.write('''
-$message
-
-$_kUsage
-${_argParser.usage}
-''');
-  exit(64);
-}
-
-const _kAbout =
-    'Converts .svg icons to an OpenType font and generates Flutter-compatible class.';
-
-const _kUsage = '''
-Usage:   icon_font_generator <input-svg-dir> <output-font-file> [options]
-
-Example: icon_font_generator assets/svg/ fonts/my_icons_font.otf --output-class-file=lib/my_icons.dart
-
-Converts every .svg file from <input-svg-dir> directory to an OpenType font and writes it to <output-font-file> file.
-If "--output-class-file" option is specified, Flutter-compatible class that contains identifiers for the icons is generated.
-''';
