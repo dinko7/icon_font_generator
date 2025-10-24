@@ -65,9 +65,9 @@ class FlutterClassGenerator {
       if (_hasPackage) _fontPackageConst,
       for (var i = 0; i < glyphList.length; i++) ..._generateIconConst(i),
       '',
-      'static List<IconData> get values => [',
-      ..._iconVarNames.map((e) => '$e,'),
-      '];',
+      'static Map<String, IconData> get all => {',
+      ..._iconVarNames.map((e) => '\'$e\': $e,'),
+      '};',
     ];
 
     final classContentString =
